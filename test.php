@@ -17,9 +17,9 @@ $value = $redis->get('foo');
 
 echo $value;
 
+$cmdinfo = $redis->createCommand('info');
+$cmdinforeply = $redis->executeCommand($cmdinfo);
 
-$redis2 = new Predis\Command\ServerConfig();
 
-$info = $redis->executeCommand($redis2);
+echo $cmdinforeply;
 
-echo $info;
