@@ -11,4 +11,6 @@ $redis = new Redis();
 
 $redis->connect('127.0.0.1', 6379);
 $info = $redis->info();
-print_r(array_values($info));
+foreach ($info as $value) {
+    echo $value; '<br>';
+}
