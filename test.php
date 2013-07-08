@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-require 'Predis/Autoloader.php';
+require 'Autoloader.php';
 
 Predis\Autoloader::register();
 
@@ -16,3 +16,10 @@ $redis->set('foo', 'bar');
 $value = $redis->get('foo');
 
 echo $value;
+
+
+$redis2 = new Predis\Command\ServerConfig();
+
+$info = $redis->executeCommand($redis2);
+
+echo $info;
