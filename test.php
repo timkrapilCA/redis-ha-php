@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-require 'Autoloader.php';
+require 'Predis/Autoloader.php';
 
 Predis\Autoloader::register();
 
