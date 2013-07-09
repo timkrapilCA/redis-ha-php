@@ -10,7 +10,7 @@
 $redis = new Redis();
 
 $redis->connect('127.0.0.1', 6379);
-$info = array($redis->info());
+$info = $redis->info();
 foreach ($info as $value) {
-    echo $value; '<br>';
+    echo $value; "<br>";
 }
