@@ -9,7 +9,7 @@
 
 $redis = new Redis();
 
-$redis->connect('127.0.0.1', 6379);
+$redis->connect('d2-redisproxy-01.channeladvisor.com', 6379);
 $info = $redis->info();
 foreach ($info as $value) {
     echo $value; "<br>";
