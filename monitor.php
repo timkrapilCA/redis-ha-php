@@ -28,9 +28,14 @@ function DoubleCheck(){
 }
 
 function ConnectRedis(){
+    try{
     $redis = new Redis();
     $redis->connect('d2-redisproxy-01.channeladvisor.com', 6379);
     return $redis;
+    }Catch (Exception $e){
+        echo 'Caught Exception: ', $e->getMessage(), "\n";
+    }
+
 }
 
 function TestSet($redisConn){
