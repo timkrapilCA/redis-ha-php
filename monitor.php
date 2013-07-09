@@ -11,7 +11,7 @@
 
 
 function RunChecks(){
-    if (ConnectRedis());{
+    if ($redis = ConnectRedis()){
 
         if(PingRedis($redis)!='+PONG'){
             print "didn't get a pong";
