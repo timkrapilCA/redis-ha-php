@@ -11,8 +11,8 @@ $redis = new Redis();
 
 $redis->connect('d2-redisproxy-01.channeladvisor.com', 6379);
 $info = $redis->info();
-while ($info){
+
 echo '<pre>';
 print_r ($info);
 echo '</pre>';
-}
+
