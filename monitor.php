@@ -17,8 +17,8 @@ function RunChecks(){
     if(PingRedis($redis)!='+PONG'){
         print "didn't get a pong";
         #TODO: kick out to the are we really down? function
-
     }
+    print 'got a +PONG';
 }
 
 function DoubleCheck(){
