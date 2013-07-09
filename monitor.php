@@ -8,20 +8,34 @@
  */
 
 
-$redis = new Redis();
-$redis->connect('d2-redisproxy-01.channeladvisor.com', 6379);
 
 
+function RunChecks(){
+    $redis = new Redis();
+    $redis->connect('d2-redisproxy-01.channeladvisor.com', 6379);
+
+    if(PingRedis($redis)!='+PONG'){
+        print "didn't get a pong";
+        #TODO: kick out to the are we really down? function
+
+    }
+}
+
+function DoubleCheck(){
+
+}
+
+function TestSet($redisConn){
+    #TODO: set a value and return an error if it fails
+}
+
+function TestGet($redisConn){
+    #TODO: get a value and return an error if it fails
+}
 
 function PingRedis($redisConn){
-
     return $redisConn->Ping();
-
-
 }
 
-if (PingRedis($redis)){
 
-    print PingRedis($redis);
 
-}
