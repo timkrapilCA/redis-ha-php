@@ -19,6 +19,8 @@ function RunChecks(){
         }
         print 'got a +PONG <br />';
     }
+
+    Print 'no connection!';
 }
 
 function DoubleCheck(){
