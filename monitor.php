@@ -39,3 +39,4 @@ function PingRedis($redisConn){
 
 
 
+RunChecks();
