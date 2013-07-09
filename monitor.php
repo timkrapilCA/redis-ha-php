@@ -19,3 +19,9 @@ function PingRedis($redisConn){
 
 
 }
+
+if (PingRedis($redis)){
+
+    print PingRedis($redis);
+
+}
