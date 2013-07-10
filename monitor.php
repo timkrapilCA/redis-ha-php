@@ -11,16 +11,28 @@
 
 
 function RunChecks(){
-    if ($redis = ConnectRedis()){
-
+    try{
+    $redis = ConnectRedis();
         if(PingRedis($redis)!='+PONG'){
             print "didn't get a pong";
             #TODO: kick out to the are we really down? function
         }
-        print 'got a +PONG <br />';
+        print 'got a +PONG';
+
+
+
+    }catch(Exception $e){
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+        DoFailOver();
     }
 
-    Print 'no connection!';
+
+
+
+}
+
+function DoFailOver(){
+    print 'doing failover stuff';
 }
 
 function DoubleCheck(){
@@ -28,13 +40,17 @@ function DoubleCheck(){
 }
 
 function ConnectRedis(){
-    try{
+
     $redis = new Redis();
-    $redis->connect('d2-redisproxy-01.channeladvisor.com', 6379);
-    return $redis;
-    }Catch (Exception $e){
-        echo 'Caught Exception: ', $e->getMessage(), "\n";
+    $boolRedisConn = $redis->connect('d2-redisproxy-01.channeladvisor.com', 6379);
+    if ($boolRedisConn){
+        return $redis;
     }
+    Else{
+       throw new Exception('Could not connect to redis.');
+    }
+
+
 
 }
 
@@ -47,7 +63,12 @@ function TestGet($redisConn){
 }
 
 function PingRedis($redisConn){
-    return $redisConn->Ping();
+    try{
+        $ping = $redisConn->Ping();
+    }catch(Exception $e){
+        echo 'Caught Exception: ', $e->getMessage(), "\n";
+    }
+    return $ping;
 }
 
 
