@@ -32,7 +32,7 @@ function RunChecks(){
 }
 
 function DoFailOver(){
-    print 'doing failover stuff';
+    echo 'doing failover stuff', "\n";
 }
 
 function DoubleCheck(){
